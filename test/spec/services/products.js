@@ -10,9 +10,4 @@ describe('Service: products', function () {
   beforeEach(inject(function (_products_) {
     products = _products_;
   }));
-
-  it('should do something', function () {
-    console.log(products);
-  });
-
 });
