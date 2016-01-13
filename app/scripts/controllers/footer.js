@@ -9,6 +9,5 @@
  */
 angular.module('ngShoppingCartApp')
   .controller('FooterCtrl', function ($scope) {
-    console.log('Hi!');
     $scope.date = new Date();
   });

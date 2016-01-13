@@ -16,7 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngStorage'
+    'growlNotifications',
   ])
   .config(function ($routeProvider) {
     $routeProvider
