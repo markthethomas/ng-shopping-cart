@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'growlNotifications',
+    'angular.filter'
   ])
   .config(function ($routeProvider) {
     $routeProvider

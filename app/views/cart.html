@@ -10,30 +10,60 @@
         </a>
       </div>
 
-      <ul ng-if="items" class="list-group text-center">
-        <li ng-repeat="item in items" class="list-group-item">
-          <div class="row">
+      <ul ng-if="items" class="list-group">
+        <li ng-repeat="item in items " class="list-group-item">
+          <h4><b>{{ item.product.name }}</b>
+            <small>
+              | <i class="fa fa-sml fa-tags"></i> {{ key }}
+            </small>
+          </h4>
+          <hr>
+          <div class="text-center row">
             <div class="col-xs-12 col-sm-3">
-              <h4><b>{{ item.product.name }}</b></h4>
               <img class="img-responsive center-block" src="{{ item.product.image}}" alt="">
             </div>
             <div class="col-xs-12 col-sm-3">
               <h4>Quantity: <b>{{ item.qty }}</b></h4>
-              <h4>Details:</h4>
-              <p>{{ item.product.description }}</p>
+              <p>
+                <em>{{ item.product.description }}</em>
+              </p>
             </div>
             <div class="col-xs-12 col-sm-3">
-              <h4>Subtotal {{ item.qty * item.product.price | currency: '$' }}</b></h4>
+              <h4>
+                <b>{{ item.qty * item.product.price | currency: '$' }}</b>
+              </h4>
               ({{ item.qty }} x {{ item.product.price | currency: '$'}})
             </div>
             <div class="col-xs-12 col-sm-3">
-              <a class="btn btn-danger clearfix" ng-click="removeProduct(item.product, $index)">
-                Remove Item <i class="fa fa-times"></i>
-              </a>
+              <a class="btn btn-danger clearfix" ng-click="removeProduct(item.product)">
+                  Remove Item <i class="fa fa-times"></i>
+                </a>
             </div>
           </div>
         </li>
       </ul>
+
+      <div class="text-right" ng-show="items.length">
+        <div class="row">
+          <div class="col-sm-6"></div>
+          <div class="col-sm-6">
+            <h4>
+              <em>subtotal: </em><b>{{ subTotal | currency: '$'}}</b></h4>
+            <h4 ng-if="eligibleForDiscount">
+              <em>category discount: </em><b>(10%)</b>
+            </h4>
+            <h4>
+              <em>sales tax: 7.5%</em>
+            </h4>
+            <h4>
+              <em>shipping: $4.99</em>
+            </h4>
+            <hr>
+            <h4>
+              <em>total: </em><b>{{ total | currency: '$'}}</b></h4>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -10,6 +10,7 @@
 angular.module('ngShoppingCartApp')
   .service('cartApi', function() {
     var items = [];
+    var subTotal;
 
     function getCart() {
       return items;
@@ -32,21 +33,53 @@ angular.module('ngShoppingCartApp')
       }
     }
 
-    function remove(product, index) {
-      if (items[existsInCart(product)].qty === 0) {
-        items.splice(index, 1);
-      } else {
-        items[existsInCart(product)].qty -= 1;
-        // check to see if the item should be removed from the cart
-        if (items[existsInCart(product)].qty === 0) {
-          items.splice(index, 1);
+    function remove(product) {
+      items.forEach(function each(current, index, array) {
+        console.log(current);
+        if (current.product.name === product.name) {
+          items[existsInCart(product)].qty -= 1;
+          if (items[existsInCart(product)].qty === 0) {
+            items.splice(index, 1);
+          }
         }
+      });
+    }
+
+    function itemsInCart() {
+      return itemCount;
+    }
+
+    function discount() {
+      var tags = [];
+      var shouldApplyDiscount;
+      items.forEach(function gatherTags(current) {
+        tags = tags.concat(current.product.tags);
+      });
+      shouldApplyDiscount = _.uniq(tags).length !== items.length;
+      return shouldApplyDiscount;
+    }
+
+    function subTotal() {
+      subTotal = items.reduce(function(sum, current) {
+        return sum += current.product.price * current.qty
+      }, 0);
+      if (discount()) {
+        return subTotal -= (subTotal * 0.10);
       }
+      return subTotal;
+    }
+
+    function total() {
+      return subTotal += (subTotal * 0.075) + 4.99;
     }
 
     return {
       add: add,
-      remove: remove,
+      discount: discount,
       getCart: getCart,
+      itemsInCart: itemsInCart,
+      remove: remove,
+      subTotal: subTotal,
+      total: total,
     };
   });

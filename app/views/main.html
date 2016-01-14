@@ -5,7 +5,7 @@
       <hr ng-if="$index === 3">
       <div class="col-md-4">
         <h3><b>{{ product.name }}</b></h3>
-        <img class="img-responsive img-thumbnail product-image" src="{{product.image}}" alt="">
+        <img class="img-responsive img-thumbnail product-image" src="{{ product.image }}" alt="">
         <div class="price">
           <h4>{{product.price | currency: "$"}}</h4>
         </div>
@@ -20,8 +20,8 @@
             </p>
           </div>
           <div class="col-sm-12 col-xs-12">
-            <button ng-click="addProduct(product, 1)" class="btn btn-block btn-success">
-              <i class="fa fa-cart-plus"> Add to Cart</i>
+            <button ng-disabled="product.qtyAvailable === 0" ng-click="addProduct(product, 1)" class="btn btn-block btn-success">
+              <i class="fa fa-cart-plus"> {{product.qtyAvailable > 0 ? 'Add to Cart' : 'Out of Stock'}}</i>
             </button>
           </div>
         </div>

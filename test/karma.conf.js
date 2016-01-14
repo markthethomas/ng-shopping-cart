@@ -33,6 +33,7 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-growl-notifications/dist/angular-growl-notifications.js',
       'bower_components/lodash/lodash.js',
+      'bower_components/angular-filter/dist/angular-filter.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",
