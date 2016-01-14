@@ -49,7 +49,7 @@
           <div class="col-sm-6">
             <h4>
               <em>subtotal: </em><b>{{ subTotal | currency: '$'}}</b></h4>
-            <h4 ng-if="eligibleForDiscount">
+            <h4 ng-show="!eligibleForDiscount">
               <em>category discount: </em><b>(10%)</b>
             </h4>
             <h4>

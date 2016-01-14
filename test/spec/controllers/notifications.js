@@ -16,8 +16,4 @@ describe('Controller: NotificationsCtrl', function () {
       // place here mocked dependencies
     });
   }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(NotificationsCtrl.awesomeThings.length).toBe(3);
-  });
 });

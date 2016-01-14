@@ -23,6 +23,8 @@ angular.module('ngShoppingCartApp')
     }
 
     function add(product, qty) {
+      if (product.qtyAvailable === 0) {return};
+      qty = qty || 1;
       if (existsInCart(product) === -1) {
         items.push({
           product: product,
@@ -59,7 +61,7 @@ angular.module('ngShoppingCartApp')
       return shouldApplyDiscount;
     }
 
-    function subTotal() {
+    function getSubtotal() {
       subTotal = items.reduce(function(sum, current) {
         return sum += current.product.price * current.qty
       }, 0);
@@ -70,16 +72,23 @@ angular.module('ngShoppingCartApp')
     }
 
     function total() {
-      return subTotal += (subTotal * 0.075) + 4.99;
+      subTotal += ((subTotal * 0.075) + 4.99);
+      return subTotal;
+    }
+
+    function clear(){
+      items = [];
+      return items;
     }
 
     return {
       add: add,
+      clear: clear,
       discount: discount,
       getCart: getCart,
       itemsInCart: itemsInCart,
       remove: remove,
-      subTotal: subTotal,
+      subTotal: getSubtotal,
       total: total,
     };
   });

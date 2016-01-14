@@ -10,9 +10,4 @@ describe('Service: notifications', function () {
   beforeEach(inject(function (_notifications_) {
     notifications = _notifications_;
   }));
-
-  it('should do something', function () {
-    expect(!!notifications).toBe(true);
-  });
-
 });

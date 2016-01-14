@@ -36,9 +36,14 @@ module.exports = function(config) {
       'bower_components/angular-filter/dist/angular-filter.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
+      'bower_components/karma-read-json/karma-read-json.js',
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
-      "test/spec/**/*.js"
+      "test/spec/**/*.js",
+      { pattern:  'app/products/*.json',
+        watched:  true,
+        served:   true,
+        included: false }
     ],
 
     // list of files / patterns to exclude
