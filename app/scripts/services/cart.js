@@ -23,7 +23,9 @@ angular.module('ngShoppingCartApp')
     }
 
     function add(product, qty) {
-      if (product.qtyAvailable === 0) {return};
+      if (product.qtyAvailable === 0) {
+        return
+      };
       qty = qty || 1;
       if (existsInCart(product) === -1) {
         items.push({
@@ -37,7 +39,6 @@ angular.module('ngShoppingCartApp')
 
     function remove(product) {
       items.forEach(function each(current, index, array) {
-        console.log(current);
         if (current.product.name === product.name) {
           items[existsInCart(product)].qty -= 1;
           if (items[existsInCart(product)].qty === 0) {
@@ -76,7 +77,7 @@ angular.module('ngShoppingCartApp')
       return subTotal;
     }
 
-    function clear(){
+    function clear() {
       items = [];
       return items;
     }

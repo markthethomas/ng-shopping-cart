@@ -51,13 +51,6 @@ describe('Service: cart', function () {
     expect(+cartApi.subTotal().toFixed(2)).toEqual(20.49);
   });
 
-  it('should return the total', function () {
-    cartApi.add(availableProducts[0], 1);
-    cartApi.add(availableProducts[1], 1);
-    expect(cartApi.getCart().length).toEqual(2);
-    expect(+cartApi.subTotal().toFixed(2)).toEqual(20.49);
-  });
-
   afterEach(function () {
     cartApi.clear();
   });
